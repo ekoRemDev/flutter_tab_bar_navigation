@@ -15,16 +15,20 @@ class MyTabs extends StatefulWidget {
 
 class _MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
   TabController tabController;
+  TabController bottomController;
+
 
   @override
   void initState() {
     super.initState();
     tabController = new TabController(length: 3, vsync: this);
+    bottomController = new TabController(length: 4, vsync: this);
   }
 
   @override
   void dispose() {
     tabController.dispose();
+    bottomController.dispose();
     super.dispose();
   }
 
@@ -47,7 +51,7 @@ class _MyTabsState extends State<MyTabs> with SingleTickerProviderStateMixin {
       ]),
       bottomNavigationBar: new Material(
         color: Colors.green,
-        child: new TabBar(controller: tabController, tabs: <Tab>[
+        child: new TabBar(controller: bottomController, tabs: <Tab>[
           Tab(icon: Icon(Icons.arrow_forward)),
           Tab(icon: Icon(Icons.arrow_downward)),
           Tab(icon: Icon(Icons.arrow_back)),
